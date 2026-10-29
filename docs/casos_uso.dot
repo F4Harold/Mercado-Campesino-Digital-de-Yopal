@@ -1,0 +1,14 @@
+digraph UC { rankdir=LR; fontname="Helvetica"; node [fontname="Helvetica", fontsize=10]; edge [arrowhead=none, color="#555555"]; nodesep=0.25; ranksep=1.1;
+
+ node [shape=box, style="filled", fillcolor="#FFF6E0", color="#B08A3A"]; Productor; Cliente; Secretaria [label="Secretaría"]; Admin [label="Administrador"];
+ subgraph cluster_s { label="Mercado Campesino Digital"; labelloc=b; style="rounded"; color="#4A6A8A";
+  node [shape=ellipse, style="filled", fillcolor="#EEF3F8", color="#4A6A8A"];
+  u1 [label="Registrarse y aceptar\ntratamiento de datos"]; u2 [label="Publicar oferta semanal"]; u3 [label="Actualizar cantidad\no retirar oferta"]; u4 [label="Consultar reservas\nde su puesto"];
+  u5 [label="Consultar oferta\nde la semana"]; u6 [label="Reservar producto"]; u7 [label="Cancelar reserva"];
+  u8 [label="Confirmar entrega\n(código de recogida)"];
+  u9 [label="Consultar reportes\nde ventas"]; u10 [label="Exportar reporte\nExcel / PDF"]; u11 [label="Gestionar productores,\nveredas y jornadas"]; }
+ Productor -> u1; Productor -> u2; Productor -> u3; Productor -> u4; Productor -> u8;
+ Cliente -> u1; Cliente -> u5; Cliente -> u6; Cliente -> u7;
+ Secretaria -> u9; Secretaria -> u10; Admin -> u11;
+ u6 -> u5 [style=dashed, arrowhead=vee, label="«include»", fontsize=8]; u10 -> u9 [style=dashed, arrowhead=vee, label="«extend»", fontsize=8];
+}

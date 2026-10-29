@@ -1,0 +1,13 @@
+digraph G { rankdir=TB; fontname="Helvetica"; node [fontname="Helvetica", fontsize=11, shape=box, style="rounded,filled", fillcolor="#EEF3F8", color="#4A6A8A"]; edge [fontname="Helvetica", fontsize=9, color="#555555"];
+ subgraph cluster_p { label="Capa de presentación"; style="rounded"; color="#99AABB"; 
+  pwa [label="PWA responsiva (Angular)\nClientes y Secretaría\nmodo sin conexión (Service Worker)"];
+  wa [label="WhatsApp Business\n(productores)"]; }
+ subgraph cluster_l { label="Capa de lógica de negocio"; style="rounded"; color="#99AABB";
+  api [label="API REST Spring Boot (Java 17)\nOfertas · Reservas · Reportes · Usuarios\nSpring Security + JWT"];
+  bot [label="Módulo bot WhatsApp\n(WhatsApp Cloud API → API REST)"];
+  jobs [label="Tareas programadas\ncierre viernes 6 p. m. · recordatorios"]; }
+ subgraph cluster_d { label="Capa de datos"; style="rounded"; color="#99AABB";
+  db [label="PostgreSQL 16\n(transacciones con bloqueo de fila)", shape=cylinder];
+  bk [label="Copias de seguridad diarias", shape=folder]; }
+ pwa -> api [label=" HTTPS / JSON"]; wa -> bot [label=" mensajes"]; bot -> api; jobs -> api; api -> db [label=" JPA"]; db -> bk;
+}
