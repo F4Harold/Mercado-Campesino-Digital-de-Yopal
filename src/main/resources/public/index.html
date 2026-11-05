@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0b120e">
+  <title>Mercado Campesino Digital de Yopal</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌽%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <main class="principal">
+
+      <section class="hero" aria-labelledby="titulo">
+        <div class="hero-cuerpo">
+          <p class="saludo"><span aria-hidden="true">✦</span> <span id="saludo">Hola, Valentina</span></p>
+          <h1 id="titulo">Tu mercado del sábado <em>empieza aquí</em></h1>
+          <p class="hero-texto">Productos frescos de las veredas de Yopal. Reserva antes del viernes a las 6:00 p. m., paga al recoger y llévate lo mejor del campo.</p>
+          <dl class="stats" id="stats" aria-label="Resumen del mercado">
+            <div><dt>Productos</dt><dd id="st-productos">–</dd></div>
+            <div><dt>Productores</dt><dd id="st-productores">–</dd></div>
+            <div><dt>Veredas</dt><dd id="st-veredas">–</dd></div>
+            <div><dt>Precio promedio</dt><dd id="st-promedio">–</dd></div>
+          </dl>
+        </div>
+        <div class="hero-arte" aria-hidden="true">
+          <span>🧺</span><span>🧀</span><span>🌽</span><span>🍍</span><span>🥚</span>
+        </div>
+        <p id="cierre" class="cierre" role="timer" aria-live="off">Cargando…</p>
+        <ul class="ventajas">
+          <li><b>Reserva fácil</b><small>En 3 pasos</small></li>
+          <li><b>Paga al recoger</b><small>Efectivo o Nequi</small></li>
+          <li><b>Directo del campo</b><small>Sin intermediarios</small></li>
+          <li><b>Recoge el sábado</b><small>Con tu código</small></li>
+        </ul>
+      </section>
+
+      <section class="filtros" aria-label="Filtros">
+        <label class="buscador">
+          <span class="sr">Buscar producto o productor</span>
+          <input id="buscar" type="search" placeholder="Buscar producto, productor o vereda…" autocomplete="off">
+        </label>
+        <div class="selectores">
+          <label class="campo"><span>Vereda</span>
+            <select id="vereda"><option value="">Todas las veredas</option></select>
+          </label>
+          <label class="campo"><span>Precio</span>
+            <select id="precio">
+              <option value="">Cualquier precio</option>
+              <option value="0-5000">Hasta $5.000</option>
+              <option value="5000-15000">$5.000 a $15.000</option>
+              <option value="15000-">Más de $15.000</option>
+            </select>
+          </label>
+          <label class="campo interruptor"><span>Disponibilidad</span>
+            <span class="fila"><b>Solo con existencias</b>
+              <input id="solo" type="checkbox" role="switch"><i aria-hidden="true"></i></span>
+          </label>
+        </div>
+      </section>
+
+      <nav id="categorias" class="chips" aria-label="Categorías"></nav>
+
+      <div class="titulo-seccion">
+        <h2>Ofertas de la semana</h2><span id="contador" class="contador"></span>
+      </div>
+      <section id="lista" class="lista" aria-live="polite"></section>
+      <p class="nota">Pago contra entrega: efectivo o Nequi.</p>
+    </main>
+
+    <aside class="lateral" aria-label="Mi cuenta">
+      <section class="panel perfil">
+        <div class="avatar" aria-hidden="true">VR</div>
+        <div>
+          <strong>Valentina Ríos</strong>
+          <span class="nivel" id="nivel">Nivel 1 de 3</span>
+        </div>
+        <div class="barra" role="progressbar" aria-valuemin="0" aria-valuemax="3" id="barra"><i></i></div>
+        <p id="nivel-texto">Cumple 3 reservas y ya no pagas anticipo.</p>
+      </section>
+
+      <section class="panel">
+        <div class="panel-cab"><h2>Mis reservas</h2></div>
+        <ul id="mis-reservas" class="mini"></ul>
+      </section>
+
+      <section class="panel">
+        <div class="panel-cab"><h2>Favoritos</h2></div>
+        <ul id="favoritos" class="mini"></ul>
+      </section>
+    </aside>
+  </div>
+
+  <div id="velo" class="velo" hidden></div>
+  <aside id="cajon" class="cajon" role="dialog" aria-modal="true" aria-labelledby="cajon-titulo" hidden></aside>
+  <div id="mensaje" class="mensaje" role="status" hidden></div>
+  <script src="app.js"></script>
+</body>
+</html>
